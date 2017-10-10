@@ -20,5 +20,5 @@ rect(width*0.4, height*0.72, width*0.6, height*0.35);
 fill(242,7,7);
 rect(width*0.875, -3,width*0.125, height*0.17);
 fill(255, 255, 255);
-//rect(width*0.875, height*0,14, width*0.125, height*0.12);
+rect(width*0.875, height*0.14, width*0.125, height*0.12);
 rect(width*0.875, height*0.26, width*0.125, height*0.46);
