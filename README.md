@@ -14,3 +14,10 @@ Anpassbar:
 - Anzahl kleiner Kreise
 - Größe des Canvas
 - Radius großer Kreis
+
+## drawRects
+Rechtecke passend auf der Zeichenfläche verteilt
+
+Anpassbar:
+- Anzahl Rechtecke
+- Größe des Canvas
