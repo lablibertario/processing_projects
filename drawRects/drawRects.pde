@@ -8,6 +8,6 @@ void drawRect(int count) {
   float x = space;
   for(int i = 0; i < count; i++) {
     rect(x,space, space, height - 2*space);
-    x = x + 2*space;
+    x += 2*space;
   }
 }
