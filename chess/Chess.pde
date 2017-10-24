@@ -1,29 +1,17 @@
 void setup() {
   size(500,500);
-  drawGrid(9);
+  drawChess(9);
 }
 
-int[][] colors = {{0,255},{255,0}};
-int z = 0;
-
-void drawGrid(int count) {
-  float w = (float) width/count;
-  int a = 0, b = 0;
-  for(int i = 0; i < (count*count); i++, b++) {
-    if(i % count == 0 && i != 0) {
-      a++;
+void drawChess(int count) {
+  for(int i = 0; i < count*count; i++) {
+    for(int a = 0; a < count; a++) {
+      if((a + i + 1) % 2 == 0) {
+        fill(255,255,255);
+      } else {
+        fill(0,0,0);
+      }
+      rect((float) a * width/count, (float) i * width/count, (float) width/count, (float) width/count);
     }
-    if(b % count == 0) {
-      b = 0;
-    }
-    
-    z = (a % 2 == 0) ? 0:1;
-    if(b % 2 == 0) {
-      fill(colors[z][0],colors[z][0],colors[z][0]);
-    } else {
-      fill(colors[z][1],colors[z][1],colors[z][1]);
-    }
-    
-    rect(b*w,a*w,w,w);
   }
 }
