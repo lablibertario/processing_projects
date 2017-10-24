@@ -13,10 +13,21 @@ void drawGrid(int count) {
     if(b % count == 0) {
       b = 0;
     }
-    if(i % 2 == 0) {
-      fill(0,0,0);
-    } else {
-      fill(255,255,255);
+    // ugly af
+    if(count % 2 == 0) {
+      if(a % 2 == 0) {
+        if(i % 2 == 0) {
+          fill(0,0,0);
+        } else {
+          fill(255,255,255);
+        } 
+      } else {
+        if(i % 2 == 0) {
+          fill(255,255,255);
+        } else {
+          fill(0,0,0);
+        } 
+      }
     }
     rect(b*w,a*w,w,w);
   }
