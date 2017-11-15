@@ -24,7 +24,11 @@ void drawGraph(int[][] v) { // draw graph
             }
             y += 20;
         }
-        text("Min: " + calcMin(v[i]) + " Max: " + calcMax(v[i]) + " Avg: " + calcAvg(v[i]), 300, y - 10);
+        if(calcAvg(v[i]) != 0) {
+            text("Min: " + calcMin(v[i]) + " Max: " + calcMax(v[i]) + " Avg: " + calcAvg(v[i]), 300, y - 10);
+        } else {
+            text("Keine gültigen Messwerte", 300, y - 10);
+        }
         rect(0, y, width, 6);
         y += 20;
     }
