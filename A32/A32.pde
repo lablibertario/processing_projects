@@ -61,10 +61,6 @@ int calcMax(int[] p) { // calc max value of 1D array
     return max;
 }
 
-float calcDiff(int[] p) { // calc the percentage of difference
-    return 100 - (calcMin(p) * 100) / calcMax(p);
-}
-
 int[] calcMaxAll(int[][] p) { // get max value from a 2D array
     int[] r = new int[p.length];
     for(int i = 0; i < p.length; i++) {
