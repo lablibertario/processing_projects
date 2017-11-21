@@ -5,7 +5,6 @@ void setup() {
     background(255,255,255);
     pic = load("pic.jpg"); o = load("pic.jpg");
     frameRate(10);
-
 }
 
 void draw() {
