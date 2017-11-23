@@ -1,17 +1,16 @@
 /* @pjs preload="pic.jpg"; */
 int[][] pic, o;
 void setup() {
-    size(1010, 1424);
-    background(255,255,255);
+    size(600, 375); background(255,255,255); frameRate(10); // setup
     pic = load("pic.jpg"); o = load("pic.jpg");
-    frameRate(10);
+    show(pic, 0, 0);
 }
 
 void draw() {
   if(keyPressed) {
-      // clear();
+      /*clear();*/ background(255,255,255); // clear canvas // clear() isn't implemented in js mode (is there a newer / fixed version) [fallback: background(255,255,255)]
       if (key == '1') {
-          show(o, 0, 0);
+          show(replace(pic, o), 0, 0); // restore original
       } else if(key == '2') {
           show(flipH(pic), 0, 0);
       } else if(key == '3') {
@@ -19,7 +18,7 @@ void draw() {
       } else if(key == '4') {
           show(resize(pic), 0, 0);
       } else if(key == '5') {
-          show(drawC(pic, 500, 500, 200), 0, 0);
+          show(drawC(pic, 300, 100, 50), 0, 0);
       } else {
           show(o, 0, 0);
       }
@@ -71,6 +70,15 @@ int[][] drawC(int[][] data, int x, int y, int r) { // draw circle
     return data;
 }
 
+int[][] replace(int[][] o, int[][] r) { // replace one img with another one
+    for(int i = 0; i < o.length; i++) {
+        for(int j = 0; j < o[0].length; j++) {
+            o[i][j] = r[i][j];
+        }
+    }
+    return o;
+}
+
 void show(int[][]p, int xpos, int ypos){
     PImage pimage = createImage(p.length, p[0].length, ARGB);
     for (int x = 0;x<pimage.width;x++){
@@ -84,8 +92,7 @@ void show(int[][]p, int xpos, int ypos){
 
 int[][] load(String fn) {
     int[][] p = null;
-    PImage img;
-    img = loadImage(fn);
+    PImage img = loadImage(fn);
     if (img == null)
       println("Datei "+fn+" nicht gefunden - im /data-Ordner nachsehen!");
     else {
