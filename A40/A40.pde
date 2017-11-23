@@ -49,7 +49,7 @@ int[][] flipH(int[][] data) { // flip img horizontally
     return data;
 }
 
-int[][] resize(int[][] data) {
+int[][] resize(int[][] data) { // resize the image to width/2 and height/2 => a quarter
     int[][] r = new int[data.length/2][data[0].length/2];
     for(int i = 0, y = 0; i < r.length; i++, y += 2) {
         for(int j = 0, x = 0; j < r[0].length; j++, x += 2) {
@@ -70,7 +70,7 @@ int[][] drawC(int[][] data, int x, int y, int r) { // draw circle
     return data;
 }
 
-int[][] replace(int[][] o, int[][] r) { // replace one img with another one
+int[][] replace(int[][] o, int[][] r) { // replace one img with another one (same size)
     for(int i = 0; i < o.length; i++) {
         for(int j = 0; j < o[0].length; j++) {
             o[i][j] = r[i][j];
@@ -91,8 +91,7 @@ void show(int[][]p, int xpos, int ypos){
 }
 
 int[][] load(String fn) {
-    int[][] p = null;
-    PImage img = loadImage(fn);
+    int[][] p = null; PImage img = loadImage(fn);
     if (img == null)
       println("Datei "+fn+" nicht gefunden - im /data-Ordner nachsehen!");
     else {
@@ -101,8 +100,8 @@ int[][] load(String fn) {
       for(int x=0; x<img.width;x++){
         for(int y = 0; y<img.height;y++) {
           p[x][y] = img.pixels[x + img.width*y];
-        } // end for y
-      } // end for x
+        }
+      }
     }
     return p;
 }
