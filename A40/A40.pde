@@ -1,14 +1,15 @@
 /* @pjs preload="pic.jpg"; */
 int[][] pic, o;
 void setup() {
-    size(600, 375); background(255,255,255); frameRate(10); // setup
+    size(600, 420); background(255,255,255); frameRate(10); fill(0,0,0);// setup
+    text("1: Original", 10, 400); text("2: Horizontal", 100, 400); text("3: Vertikal", 200, 400); text("4: Kleiner", 300, 400); text("5: Kreis", 400, 400);  text("6: Balken", 500, 400);
     pic = load("pic.jpg"); o = load("pic.jpg");
     show(pic, 0, 0);
 }
 
 void draw() {
   if(keyPressed) {
-      /*clear();*/ background(255,255,255); // clear canvas // clear() isn't implemented in js mode (is there a newer / fixed version) [fallback: background(255,255,255)]
+      /*clear(); background(255,255,255);*/ // clear canvas // clear() isn't implemented in js mode (is there a newer / fixed version) [fallback: background(255,255,255)]
       if (key == '1') {
           show(replace(pic, o), 0, 0); // restore original
       } else if(key == '2') {
@@ -19,6 +20,8 @@ void draw() {
           show(resize(pic), 0, 0);
       } else if(key == '5') {
           show(drawC(pic, 300, 100, 50), 0, 0);
+      } else if(key == '6') {
+          show(black(pic), 0, 0);
       } else {
           show(o, 0, 0);
       }
@@ -77,6 +80,15 @@ int[][] replace(int[][] o, int[][] r) { // replace one img with another one (sam
         }
     }
     return o;
+}
+
+int[][] black(int[][] o) {
+  for(int i = 0; i < o.length; i++) {
+    for(int j = 0; j < o[0].length/2; j++) {
+      o[i][j] = color(0,0,0);
+    }
+  }
+  return o;
 }
 
 void show(int[][]p, int xpos, int ypos){
